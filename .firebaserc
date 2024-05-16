@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "tpsaladejuegos-rotelagustavo"
+  },
+  "targets": {
+    "tpsaladejuegos-rotelagustavo": {
+      "hosting": {
+        "tpsaladejuegos-rotelagustavo": [
+          "tpsaladejuegos-rotelagustavo"
+        ]
+      }
+    }
+  }
+}

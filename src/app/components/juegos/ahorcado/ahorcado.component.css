@@ -1,0 +1,111 @@
+ 
+  button {
+    width: 40px;
+    height: 40px;
+    margin: 4px 4px;
+    font-size: 19px;
+    vertical-align: top;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #333;
+    background-color: #fff;
+  }
+  
+  button:active {
+    background-color: #ccc;
+  }
+  
+  button.special {
+    width: 60px;
+    background-color: #ccc;
+  }
+  
+  button.special {
+    font-size: 13px;
+  }
+  
+  button.special:active {
+    background-color: #999;
+  }
+  
+  button.toggled {
+    background-color: #555;
+    color: #fff;
+  }
+  
+  button.wide {
+    width: 80px;
+  }
+  
+  button.spacebar {
+    width: 300px;
+  }
+
+  /* @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Pangolin&family=Press+Start+2P&family=Reenie+Beanie&display=swap'); */
+
+html {
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI';
+}
+
+.letra {
+  background: #4bb7c8;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    height: 40px;
+    width: 35px;
+    text-align: center;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    font-size: 25px; 
+}
+
+.espacio {
+  display: inline-block;    
+  width: 30px; 
+}
+
+.contenedor-letras-secreto {
+  min-height: 45px;
+}
+
+/*Diseño Responsive*/
+
+.boton {
+    background: space;
+    color: white;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: x-large;
+    border-color: transparent;
+    border: outset;
+    line-height: 5vh;
+    margin: 1vh;
+    text-transform: uppercase;
+}
+
+.boton:hover {
+    opacity: 80%;
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+#palabra-nueva {
+    border: outset;
+    border-radius: 15px;
+    text-align: -webkit-center;
+    line-height: 5vh;
+    width: 40vw;
+
+}
+
+.horca {
+    width: 70vw;
+    height: 50vh;
+    background-image: url(/hoja.webp);
+    background-size: cover;
+}
+  

@@ -1,0 +1,10 @@
+<div class="chat-container flex flex-col p-4 max-h-[80vh] overflow-y-auto">
+    <div *ngFor="let chat of chats$ | async" [ngClass]="{'bg-green-100 self-end text-right': chat.usuario === usuario, 'bg-white self-start text-left': chat.usuario !== usuario}" class="chat-message p-3 my-2 rounded-lg max-w-[60%]">
+      <strong>{{ chat.usuario }}:</strong> {{ chat.mensaje }}
+      <small>{{ chat.timestamp?.toDate() | date:'short' }}</small>
+    </div>
+  </div>
+  <form (ngSubmit)="grabarMensaje()" #chatForm="ngForm" class="chat-form flex p-4 border-t border-gray-300">
+    <input type="text" name="message" [(ngModel)]="nuevoMensaje.mensaje" placeholder="Escribe un mensaje" required class="chat-input flex-1 p-2 border border-gray-300 rounded mr-2">
+    <button type="submit" class="chat-button px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Enviar</button>
+  </form>
