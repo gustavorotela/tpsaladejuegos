@@ -21,7 +21,9 @@ export class ChatComponent {
 
   ngOnInit() {
     this.chats$ = this.chatService.getChats();
-    this.nuevoMensaje.usuario = 'gusrot2';
+    let usuarioLogeado = localStorage.getItem('userLogin');
+    this.usuario = usuarioLogeado ?? 'usuario fantasma';
+    this.nuevoMensaje.usuario = usuarioLogeado?.valueOf() ?? 'usuario fantasma';
   }
 
   async grabarMensaje() {
