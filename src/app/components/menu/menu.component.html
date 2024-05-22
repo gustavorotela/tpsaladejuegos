@@ -1,10 +1,10 @@
 <nav class="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="flex justify-between items-center">
-        <a class="py-5 px-3 text-gray-700 hover:text-gray-900 cursor-pointer" (click)="navigateTo('home')">Inicio</a>
+      <div class="flex justify-between items-center ">
+        <a class="py-5 px-3 text-gray-700 hover:text-gray-900 cursor-pointer hidden sm:flex" (click)="navigateTo('home')">Inicio</a>
         
           <div class="relative group">
-            <a class="py-5 px-3 text-gray-700 hover:text-gray-900 cursor-pointer">Juegos</a>
+            <a class="py-5 px-3 text-gray-700 hover:text-gray-900 cursor-pointer hidden sm:flex">Juegos</a>
             <div class="absolute left-0 top-full hidden mt-1 w-40 bg-white shadow-lg rounded-lg group-hover:block">
               <a class="block px-4 py-2 text-gray-700 hover:bg-gray-200 cursor-pointer" (click)="navigateTo('juegos/ahorcado')">Ahorcado</a>
               <a class="block px-4 py-2 text-gray-700 hover:bg-gray-200 cursor-pointer" (click)="navigateTo('juegos/mayoromenor')">Mayor o menor</a>
@@ -12,13 +12,13 @@
               <a class="block px-4 py-2 text-gray-700 hover:bg-gray-200 cursor-pointer" (click)="navigateTo('juegos/blackjack')">BlackJack</a>
             </div>
           </div>
-          <a class="py-5 px-3 text-gray-700 hover:text-gray-900 cursor-pointer" (click)="navigateTo('quien-soy')">Quien soy</a>
-          <a class="py-5 px-3 text-gray-700 hover:text-gray-900 cursor-pointer" (click)="navigateTo('chat')">Chat</a>
+          <a class="py-5 px-3 text-gray-700 hover:text-gray-900 cursor-pointer hidden sm:flex" (click)="navigateTo('quien-soy')">Quien soy</a>
+          <a class="py-5 px-3 text-gray-700 hover:text-gray-900 cursor-pointer hidden sm:flex" (click)="navigateTo('chat')">Chat</a>
         
         
         <!-- Botón de cerrar sesión en escritorio -->
         <div class="hidden md:flex items-center space-x-1">
-          <button class="py-2 px-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 cursor-pointer" (click)="closeSession()">Cerrar sesión</button>
+          <button class="py-2 px-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 cursor-pointer hidden sm:flex" (click)="closeSession()">Cerrar sesión</button>
         </div>
         
         <!-- Menú móvil -->
