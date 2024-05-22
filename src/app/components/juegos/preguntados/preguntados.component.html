@@ -1,9 +1,10 @@
 <app-menu></app-menu>
 
 <div class="flex flex-col items-center justify-center min-h-screen">
-  <div class="relative">
-    <div class="bg-white shadow-md rounded-lg p-6 max-w-md w-full relative overflow-hidden">
-      <img [src]="imageUrl" alt="Pregunta" class="w-full h-128 object-cover rounded mb-4">
+  <div class="bg-white shadow-md rounded-lg py-6 px-4 sm:py-8 sm:px-6 md:py-12 md:px-8 max-w-xs sm:max-w-md md:max-w-lg w-full mt-4 relative overflow-hidden">
+    <div class="flex justify-center mb-4">
+      <img [src]="imageUrl" alt="Pregunta" class="w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 object-cover rounded">
+    </div>
       <div class="bg-white bg-opacity-75 p-6 rounded-lg">
       <h2 class="text-2xl font-bold mb-4 text-center">{{ question }}</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -11,7 +12,7 @@
           <button 
             *ngFor="let answer of answers" 
             (click)="checkAnswer(answer)" 
-            class="answer-button w-full py-2 px-4 rounded mb-2 border"
+            class="answer-button w-full py-2 px-2 sm:py-3 sm:px-4 md:py-4 md:px-6 rounded mb-2 border"
             [ngClass]="{
               'bg-white text-black': !selectedAnswer || selectedAnswer !== answer,
               'bg-green-500 text-white': selectedAnswer === answer && isCorrectAnswer(answer),
@@ -28,13 +29,7 @@
           <div class="w-full py-2 px-4 rounded mb-2 border bg-gray-200">&nbsp;</div>
         </ng-template>
       </div>
-      <p *ngIf="message" class="mt-4 text-xl font-semibold text-center"
-         [ngClass]="{
-           'text-green-500': selectedAnswer !== null && isCorrectAnswer(selectedAnswer),
-           'text-red-500': selectedAnswer !== null && !isCorrectAnswer(selectedAnswer)
-         }">
-        {{ message }}
-      </p>
+
       <p class="mt-2 text-lg font-bold text-center">Puntuación: {{ correctAnswers }}/{{ totalQuestions }}</p>
     </div>
   </div>

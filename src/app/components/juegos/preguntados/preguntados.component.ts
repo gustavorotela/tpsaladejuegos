@@ -13,11 +13,11 @@ import { MenuComponent } from '../../menu/menu.component';
   providers: [PreguntadosService]
 })
 export class PreguntadosComponent implements OnInit {
-  question: string;
+  question: string = '¿Quién es ese pokemón?';
   answers: string[] = [];
   chargeAnswers: string[] = [];
   correctAnswer: string;
-  imageUrl: string;
+  imageUrl: string = "../../assets/loading_icon.gif";
   message: string;
   usedPokemonsId:number[] = [];
   optionsId:number[] = [];
