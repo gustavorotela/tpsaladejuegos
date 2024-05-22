@@ -1,1 +1,22 @@
-<p>mayoromenor works!</p>
+<app-menu></app-menu>
+
+<div class="flex flex-col items-center justify-center min-h-screen">
+  <h1 class="text-4xl font-bold mb-6" style="color: white;">Juego de Adivinar Cartas</h1>
+  <div class="card mb-6 p-6 bg-white shadow-lg rounded-lg">
+    <img [src]="currentCardImage" alt="Carta actual" class="w-48 h-64" />
+  </div>
+  @if (!gameOver) {
+  <div class="flex space-x-6 mb-6">
+    <button (click)="guess(true)" class="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-700">Mayor</button>
+    <button (click)="guess(false)" class="bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-700">Menor</button>
+  </div>
+  }
+  <div class="card p-6 bg-white shadow-lg rounded-lg">
+    <img [src]="nextCardImage" alt="Siguiente carta" class="w-48 h-64" />
+  </div>
+  <p class="text-red-500 mt-6" style="color: white;">{{ message }}</p>
+  <p class="text-gray-700 mt-4" style="color: white;">Vidas: {{ lives }}</p>
+  @if (gameOver) {
+  <button (click)="startGame()" class="mt-6 bg-green-500 text-white py-3 px-6 rounded-lg hover:bg-green-700">Reiniciar Juego</button>
+  }
+</div>

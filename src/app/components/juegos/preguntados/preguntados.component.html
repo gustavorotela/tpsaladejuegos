@@ -1,0 +1,41 @@
+<app-menu></app-menu>
+
+<div class="flex flex-col items-center justify-center min-h-screen">
+  <div class="relative">
+    <div class="bg-white shadow-md rounded-lg p-6 max-w-md w-full relative overflow-hidden">
+      <img [src]="imageUrl" alt="Pregunta" class="w-full h-128 object-cover rounded mb-4">
+      <div class="bg-white bg-opacity-75 p-6 rounded-lg">
+      <h2 class="text-2xl font-bold mb-4 text-center">{{ question }}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <ng-container *ngIf="answers.length; else placeholder">
+          <button 
+            *ngFor="let answer of answers" 
+            (click)="checkAnswer(answer)" 
+            class="answer-button w-full py-2 px-4 rounded mb-2 border"
+            [ngClass]="{
+              'bg-white text-black': !selectedAnswer || selectedAnswer !== answer,
+              'bg-green-500 text-white': selectedAnswer === answer && isCorrectAnswer(answer),
+              'bg-red-500 text-white': selectedAnswer === answer && !isCorrectAnswer(answer),
+              'hover:bg-gray-400': !selectedAnswer
+            }">
+            {{ answer }}
+          </button>
+        </ng-container>
+        <ng-template #placeholder>
+          <div class="w-full py-2 px-4 rounded mb-2 border bg-gray-200">&nbsp;</div>
+          <div class="w-full py-2 px-4 rounded mb-2 border bg-gray-200">&nbsp;</div>
+          <div class="w-full py-2 px-4 rounded mb-2 border bg-gray-200">&nbsp;</div>
+          <div class="w-full py-2 px-4 rounded mb-2 border bg-gray-200">&nbsp;</div>
+        </ng-template>
+      </div>
+      <p *ngIf="message" class="mt-4 text-xl font-semibold text-center"
+         [ngClass]="{
+           'text-green-500': selectedAnswer !== null && isCorrectAnswer(selectedAnswer),
+           'text-red-500': selectedAnswer !== null && !isCorrectAnswer(selectedAnswer)
+         }">
+        {{ message }}
+      </p>
+      <p class="mt-2 text-lg font-bold text-center">Puntuación: {{ correctAnswers }}/{{ totalQuestions }}</p>
+    </div>
+  </div>
+</div>

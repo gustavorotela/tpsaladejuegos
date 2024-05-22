@@ -27,6 +27,9 @@
       <div class="text-center">
         <a class="text-blue-500 hover:underline" (click)="Registrarse()">Registrarse</a>
       </div>
+      <div *ngIf="errorMessage" class="mt-4 p-4 text-red-700 bg-red-200 rounded-lg">
+        {{ errorMessage }}
+      </div>
     </form>
   </div>
 </body>

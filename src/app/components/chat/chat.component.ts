@@ -3,11 +3,12 @@ import { Component, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ChatService, ChatMessage } from '../../services/chat.service';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,MenuComponent],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })

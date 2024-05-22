@@ -1,0 +1,41 @@
+<app-menu></app-menu>
+<div class="flex flex-col items-center justify-center min-h-screen">
+  <h1 class="text-4xl font-bold mb-6" style="color: white;">Blackjack</h1>
+  <div class="mb-6">
+    <h2 class="text-2xl font-semibold" style="color: white;">Dealer</h2>
+    <div class="flex">
+      @for (card of dealerHand; track $index) {
+      <img  [src]="getCardImage(card, true)" alt="Dealer Card" class="w-32 h-44 m-1" />
+      }
+    </div>
+    <p class="text-xl" style="color: white;">Puntuación: {{ revealDealerCards ? dealerScore : '??' }}</p>
+  </div>
+
+  <div class="mb-6">
+    <h2 class="text-2xl font-semibold" style="color: white;">Jugador</h2>
+    <div class="flex">
+      @for (card of playerHand; track $index) {
+      <img [src]="getCardImage(card, false)" alt="Player Card" class="w-32 h-44 m-1" />
+    }
+    </div>
+    <p class="text-xl" style="color: white;">Puntuación: {{ playerScore }}</p>
+  </div>
+  @if (!gameOver) {
+  <div class="mb-6">
+    <button (click)="hit()" class="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-700 mr-2">Pedir</button>
+    <button (click)="stand()" class="bg-green-500 text-white py-3 px-6 rounded-lg hover:bg-green-700">Plantarse</button>
+  </div>
+}
+  @if (gameOver) {
+  <div class="mb-6">
+    <p *ngIf="message" class="mt-4 text-xl font-semibold text-center"
+         [ngClass]="{
+           'text-green-500': playerScore !== null && isCorrectAnswer(dealerScore,playerScore),
+           'text-red-500': playerScore !== null && !isCorrectAnswer(dealerScore,playerScore)
+         } ">
+        {{ message }}
+      </p>
+    <button (click)="startGame()" class="mt-4 bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-700">Reiniciar Juego</button>
+  </div>
+}
+</div>

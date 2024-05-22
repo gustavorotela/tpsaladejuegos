@@ -1,0 +1,19 @@
+/* Ocultar el menú móvil por defecto */
+.mobile-menu.hidden {
+    display: none;
+  }
+  
+  /* Mostrar el menú móvil cuando se elimine la clase `hidden` */
+  .mobile-menu {
+    display: block;
+  }
+  
+  /* Opcional: estilo para que el submenú de juegos aparezca al pasar el ratón */
+  .relative.group:hover .group-hover\\:block {
+    display: block;
+  }
+  
+  /* Inicialmente ocultar el submenú de juegos */
+  .group-hover\\:block {
+    display: none;
+  }

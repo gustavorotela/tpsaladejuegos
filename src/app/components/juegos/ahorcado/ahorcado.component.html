@@ -1,42 +1,72 @@
+<app-menu></app-menu>
+<div class="container mx-auto p-4 mt-40">
+  <h1 class="text-2xl font-bold text-center mb-4 " style="color: white;">Juego del Ahorcado</h1>
+  <div class="flex justify-center items-center mb-4">
+    <div class="flex flex-col items-center">
+      <svg height="250" width="200" class="mb-4">
+        <!-- Poste -->
+        <line x1="60" y1="20" x2="140" y2="20" stroke="white" stroke-width="4" />
+        <line x1="140" y1="20" x2="140" y2="50" stroke="white" stroke-width="4" />
+        <line x1="60" y1="20" x2="60" y2="230" stroke="white" stroke-width="4" />
+        <line x1="20" y1="230" x2="100" y2="230" stroke="white" stroke-width="4" />
 
-
-<div [innerHTML]="palabraHTML"></div>
-    <img class="images" src="../../../../assets/ahorcado/ahorcado-{{numeroError}}.png"/>
-  <div>
-    <button (click)="letraClick('q')" id="q">q</button>
-    <button (click)="letraClick('e')" id="e">e</button>
-    <button (click)="letraClick('w')" id="w">w</button>
-    <button (click)="letraClick('r')" id="r">r</button>
-    <button (click)="letraClick('t')" id="t">t</button>
-    <button (click)="letraClick('y')" id="y">y</button>
-    <button (click)="letraClick('u')" id="u">u</button>
-    <button (click)="letraClick('i')" id="i">i</button>
-    <button (click)="letraClick('o')" id="o">o</button>
-    <button (click)="letraClick('p')" id="p">p</button>
+        <!-- Cabeza -->
+        <circle *ngIf="lives <= 5" cx="140" cy="70" r="20" stroke="white" stroke-width="4" fill="none" />
+        <!-- Cuerpo -->
+        <line *ngIf="lives <= 4" x1="140" y1="90" x2="140" y2="150" stroke="white" stroke-width="4" />
+        <!-- Brazo izquierdo -->
+        <line *ngIf="lives <= 3" x1="140" y1="110" x2="120" y2="130" stroke="white" stroke-width="4" />
+        <!-- Brazo derecho -->
+        <line *ngIf="lives <= 2" x1="140" y1="110" x2="160" y2="130" stroke="white" stroke-width="4" />
+        <!-- Pierna izquierda -->
+        <line *ngIf="lives <= 1" x1="140" y1="150" x2="120" y2="180" stroke="white" stroke-width="4" />
+        <!-- Pierna derecha -->
+        <line *ngIf="lives <= 0" x1="140" y1="150" x2="160" y2="180" stroke="white" stroke-width="4" />
+      </svg>
+      <div class="text-xl font-mono tracking-widest mb-4" style="color: white;">
+        <span *ngFor="let letter of displayedWord">{{ letter }} </span>
+      </div>
+    </div>
   </div>
-  <div>
-    <button (click)="letraClick('a')" id="a">a</button>
-    <button (click)="letraClick('s')" id="s">s</button>
-    <button (click)="letraClick('d')" id="d">d</button>
-    <button (click)="letraClick('f')" id="f">f</button>
-    <button (click)="letraClick('g')" id="g">g</button>
-    <button (click)="letraClick('h')" id="h">h</button>
-    <button (click)="letraClick('j')" id="j">j</button>
-    <button (click)="letraClick('k')" id="k">k</button>
-    <button (click)="letraClick('l')" id="l">l</button>
-  </div>
-  <div>
-    <button (click)="letraClick('z')" id="z">z</button>
-    <button (click)="letraClick('x')" id="x">x</button>
-    <button (click)="letraClick('c')" id="c">c</button>
-    <button (click)="letraClick('v')" id="v">v</button>
-    <button (click)="letraClick('b')" id="b">b</button>
-    <button (click)="letraClick('n')" id="n">n</button>
-    <button (click)="letraClick('m')" id="m">m</button>
-  </div>
-
-  <!--<div>
-    <button class="special" (click)="onAlt()">{{ keyboard.alt ? 'ABC' : '123'}}</button>
-    <button class="spacebar" appKeyboardKey="&nbsp; &nbsp; &nbsp;"></button>
-    <button class="special wide" (click)="onEnter()">Enter</button>
-  </div>-->
+  
+  <div class="flex justify-center items-center flex-wrap mb-4">
+    <div class="w-full flex justify-center mb-2">
+      <button *ngFor="let letter of qwertyTopRow"
+              (click)="guessLetter(letter)"
+              [disabled]="guessedLetters.has(letter)"
+              class="m-1 p-2 border rounded w-10 h-10 flex items-center justify-center"
+              [ngClass]="{'bg-red-500': wrongLetters.has(letter), 'bg-green-500': correctLetters.has(letter), 'bg-gray-200': !guessedLetters.has(letter)}">
+              {{ letter }}
+              <span *ngIf="correctLetters.has(letter)" class="text-green-500">&#10003;</span>
+              <span *ngIf="wrongLetters.has(letter)" class="text-red-500">&#10007;</span>
+            </button>
+          </div>
+          <div class="w-full flex justify-center mb-2">
+            <button *ngFor="let letter of qwertyMiddleRow"
+                    (click)="guessLetter(letter)"
+                    [disabled]="guessedLetters.has(letter)"
+                    class="m-1 p-2 border rounded w-10 h-10 flex items-center justify-center"
+                    [ngClass]="{'bg-red-500': wrongLetters.has(letter), 'bg-green-500': correctLetters.has(letter), 'bg-gray-200': !guessedLetters.has(letter)}">
+              {{ letter }}
+              <span *ngIf="correctLetters.has(letter)" class="text-green-500">&#10003;</span>
+              <span *ngIf="wrongLetters.has(letter)" class="text-red-500">&#10007;</span>
+            </button>
+          </div>
+          <div class="w-full flex justify-center">
+            <button *ngFor="let letter of qwertyBottomRow"
+                    (click)="guessLetter(letter)"
+                    [disabled]="guessedLetters.has(letter)"
+                    class="m-1 p-2 border rounded w-10 h-10 flex items-center justify-center"
+                    [ngClass]="{'bg-red-500': wrongLetters.has(letter), 'bg-green-500': correctLetters.has(letter), 'bg-gray-200': !guessedLetters.has(letter)}">
+              {{ letter }}
+              <span *ngIf="correctLetters.has(letter)" class="text-green-500">&#10003;</span>
+              <span *ngIf="wrongLetters.has(letter)" class="text-red-500">&#10007;</span>
+            </button>
+          </div>
+        </div>
+        
+        <div *ngIf="gameOver" class="text-center text-red-500">
+          <p>{{ message }}</p>
+          <button (click)="resetGame()" class="bg-blue-500 text-white p-2 rounded mt-4">Reiniciar Juego</button>
+        </div>
+      </div>

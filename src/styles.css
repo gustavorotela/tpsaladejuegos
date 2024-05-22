@@ -6,4 +6,10 @@
 @import "primeng/resources/primeng.css";
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-image: url('./assets/fondo.jpg'); /* Reemplaza 'fondo.jpg' con el nombre de tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

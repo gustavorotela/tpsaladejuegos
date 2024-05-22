@@ -1,27 +1,21 @@
+import { MediaMatcher } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { signOut } from 'firebase/auth';
-import { AngularMaterialModule } from '../../angular-material.module';
-import { MediaMatcher } from '@angular/cdk/layout';
-import { AhorcadoComponent } from '../juegos/ahorcado/ahorcado.component';
-import { ChatComponent } from '../chat/chat.component';
-import { MayoromenorComponent } from '../juegos/mayoromenor/mayoromenor.component';
-import { BlackjackComponent } from '../juegos/blackjack/blackjack.component';
-import { PreguntadosComponent } from '../juegos/preguntados/preguntados.component';
-import { MenuComponent } from '../menu/menu.component';
-
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-menu',
   standalone: true,
-  imports: [AngularMaterialModule,AhorcadoComponent,ChatComponent,MayoromenorComponent,BlackjackComponent,PreguntadosComponent,MenuComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  imports: [CommonModule],
+  templateUrl: './menu.component.html',
+  styleUrl: './menu.component.css'
 })
-export class HomeComponent {
+export class MenuComponent {
   mobileQuery: MediaQueryList;
   juegoSeleccionado:number = 0;
+  isMobileMenuOpen = false;
+
   private _mobileQueryListener: () => void;
 
   constructor(
@@ -35,10 +29,7 @@ export class HomeComponent {
   }
 
   toggleMobileMenu() {
-    const menu = document.querySelector('.mobile-menu');
-    if (menu) {
-      menu.classList.toggle('hidden');
-    }
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
   ngOnDestroy(): void {
@@ -57,4 +48,5 @@ export class HomeComponent {
   navigateTo(url:string) {
     this.router.navigateByUrl(url);
   }
+
 }

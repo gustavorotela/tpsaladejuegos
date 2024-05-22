@@ -19,14 +19,16 @@ export class LoginComponent {
   email:string = "";
   password:string = "";
   emailLogeado:string = "";
+  errorMessage: string = '';
 
   constructor(private firestore:Firestore, public Auth:Auth, private router : Router) {
 
   }
 
   LoginRapido() {
-    console.log(this.email);
-    signInWithEmailAndPassword(this.Auth,'prueba@prueba.com','prueba').then((res) => {
+    this.email = 'prueba@prueba.com';
+
+    signInWithEmailAndPassword(this.Auth,this.email,'prueba').then((res) => {
       if(res.user.email != null) {
         localStorage.setItem('userLogin',res.user.email);
 
@@ -35,7 +37,7 @@ export class LoginComponent {
 
         this.router.navigateByUrl('/home');
       }
-    }).catch((e) => console.log(e))
+    }).catch((e) => this.errorMessage = 'El usuario y/o la contraseña son incorrectas.')
   }
 
   Login() {
@@ -49,7 +51,7 @@ export class LoginComponent {
 
         this.router.navigateByUrl('/home');
       }
-    }).catch((e) => console.log(e))
+    }).catch((e) => this.errorMessage = 'El usuario y/o la contraseña son incorrectas.')
   }
 
   Registrarse() {
