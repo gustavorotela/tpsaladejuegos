@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { RegisterComponent } from './components/register/register.component';
 import { authGuard } from './guards/auth.guard';
+import { ErrorpageComponent } from './components/errorpage/errorpage.component';
 
 export const routes: Routes = [
     { path:"", redirectTo:"login", pathMatch:"full" },
@@ -34,5 +35,5 @@ export const routes: Routes = [
         path:"chat",
         loadChildren: () => import('../app/components/chat/chat.module').then(m => m.ChatModule)
     },
-    { path: '**', component:LoginComponent}
+    { path: '**', component:ErrorpageComponent}
 ];
